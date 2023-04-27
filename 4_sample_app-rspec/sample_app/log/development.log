@@ -1,0 +1,234 @@
+Started GET "/" for 172.21.0.1 at 2023-04-22 07:45:06 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 2 pending migrations:
+
+20211129072927_create_lists.rb
+20211130072352_add_image_id_to_lists.rb
+
+
+):
+  
+activerecord (6.1.7.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.7.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.7.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.7.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLists (20211129072927)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "lists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211129072927"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddImageIdToLists (20211130072352)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.7ms)[0m  [1m[35mALTER TABLE "lists" ADD "image_id" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211130072352"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (4.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-22 07:45:17.831948"], ["updated_at", "2023-04-22 07:45:17.831948"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.21.0.1 at 2023-04-22 07:45:23 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.0ms | Allocations: 392)
+Completed 200 OK in 21ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 3528)
+
+
+Started GET "/lists" for 172.21.0.1 at 2023-04-22 07:45:32 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/lists"):
+  
+Started GET "/rails/info/routes" for 172.21.0.1 at 2023-04-22 07:45:44 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-6.1.7.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [35 times] (Duration: 5.7ms | Allocations: 5748)
+  Rendered /usr/local/bundle/gems/actionpack-6.1.7.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 0.8ms | Allocations: 839)
+  Rendered /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 10.3ms | Allocations: 10788)
+  Rendered layout /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/layouts/application.html.erb (Duration: 11.7ms | Allocations: 11026)
+Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.0ms | Allocations: 12438)
+
+
+Started GET "/top" for 172.21.0.1 at 2023-04-22 07:45:51 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (Duration: 2.0ms | Allocations: 102)
+  Rendered layout layouts/application.html.erb (Duration: 520.2ms | Allocations: 313510)
+Completed 200 OK in 524ms (Views: 522.6ms | ActiveRecord: 0.0ms | Allocations: 314979)
+
+
+Started GET "/todolists" for 172.21.0.1 at 2023-04-22 07:46:53 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering todolists/index.html.erb within layouts/application
+  [1m[36mList Load (1.0ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/todolists/index.html.erb:2
+  Rendered todolists/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 37.7ms | Allocations: 15291)
+Completed 200 OK in 71ms (Views: 38.9ms | ActiveRecord: 1.0ms | Allocations: 17829)
+
+
+Started GET "/todolists/new" for 172.21.0.1 at 2023-04-22 07:47:32 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering todolists/new.html.erb within layouts/application
+  Rendered todolists/new.html.erb within layouts/application (Duration: 26.9ms | Allocations: 4673)
+  Rendered layout layouts/application.html.erb (Duration: 28.3ms | Allocations: 4759)
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 9.1ms | Allocations: 9069)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 3, expected 2; required keyword: object)):
+    12:   <h4>本文</h4>
+    13:   <%= f.text_area :body %>
+    14:   <h4>画像</h4>
+    15:   <%= f.attachment_field :image %>
+    16:   <%= f.submit '投稿' %>
+    17: <% end %>
+  
+app/views/todolists/new.html.erb:15
+app/views/todolists/new.html.erb:9
+Started GET "/todolists/new" for 172.21.0.1 at 2023-04-22 07:50:32 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/todolists_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering todolists/new.html.erb within layouts/application
+  Rendered todolists/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 858)
+  Rendered layout layouts/application.html.erb (Duration: 35.6ms | Allocations: 15474)
+Completed 200 OK in 66ms (Views: 38.1ms | ActiveRecord: 4.3ms | Allocations: 21809)
+
+
+Started POST "/todolists" for 172.21.0.1 at 2023-04-22 08:17:25 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2af4YAuUBpo4HH9fN74oTW7cn/g4UiiNhfU7FTRZ0AQ93oR7itv0NjtD+pTjNl+DZjhZzqhXUZK4ADP5SePOqA==", "list"=>{"title"=>"aaaa", "body"=>"aaa"}, "commit"=>"投稿"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/todolists_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todolists_controller.rb:7:in `create'
+  [1m[36mList Create (6.0ms)[0m  [1m[32mINSERT INTO "lists" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "aaaa"], ["body", "aaa"], ["created_at", "2023-04-22 08:17:25.716990"], ["updated_at", "2023-04-22 08:17:25.716990"]]
+  ↳ app/controllers/todolists_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todolists_controller.rb:7:in `create'
+Redirected to http://localhost:2004/todolists/1
+Completed 302 Found in 39ms (ActiveRecord: 12.3ms | Allocations: 5013)
+
+
+Started GET "/todolists/1" for 172.21.0.1 at 2023-04-22 08:17:25 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (1.7ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todolists_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering todolists/show.html.erb within layouts/application
+  Rendered todolists/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 387)
+  Rendered layout layouts/application.html.erb (Duration: 73.5ms | Allocations: 14794)
+Completed 200 OK in 84ms (Views: 75.2ms | ActiveRecord: 1.7ms | Allocations: 16613)
+
+
+Started GET "/todolists/1/edit" for 172.21.0.1 at 2023-04-22 08:43:03 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/todolists_controller.rb:22:in `edit'
+  [1m[36mList Load (0.9ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todolists_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering todolists/edit.html.erb within layouts/application
+  Rendered todolists/edit.html.erb within layouts/application (Duration: 7.9ms | Allocations: 600)
+  Rendered layout layouts/application.html.erb (Duration: 63.6ms | Allocations: 14705)
+Completed 200 OK in 87ms (Views: 65.7ms | ActiveRecord: 3.5ms | Allocations: 16343)
+
+
+Started DELETE "/%20todolists/1" for 172.21.0.1 at 2023-04-22 09:07:08 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jg++FO5GQf2QHu55OmB324UyzLwEZUWpfJ3BztOi4ANqdsIPbwmzUZNBa7Lu6AAVjdYKipRgPLZBaMkirhj+rw==", "id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/todolists_controller.rb:30:in `destroy'
+  [1m[36mList Load (1.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todolists_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todolists_controller.rb:31:in `destroy'
+  [1m[36mList Destroy (5.4ms)[0m  [1m[31mDELETE FROM "lists" WHERE "lists"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/todolists_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todolists_controller.rb:31:in `destroy'
+Redirected to http://localhost:2004/todolists
+Completed 302 Found in 43ms (ActiveRecord: 14.4ms | Allocations: 4120)
+
+
+Started GET "/todolists" for 172.21.0.1 at 2023-04-22 09:07:08 +0000
+Cannot render console from 172.21.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TodolistsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering todolists/index.html.erb within layouts/application
+  [1m[36mList Load (1.9ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/todolists/index.html.erb:2
+  Rendered todolists/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 700)
+  Rendered layout layouts/application.html.erb (Duration: 49.0ms | Allocations: 14832)
+Completed 200 OK in 52ms (Views: 48.6ms | ActiveRecord: 1.9ms | Allocations: 15429)
+
+
